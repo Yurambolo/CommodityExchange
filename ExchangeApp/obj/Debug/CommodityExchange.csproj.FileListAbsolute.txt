@@ -1,0 +1,13 @@
+C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchange\CommodityExchange\bin\Debug\CommodityExchange.exe.config
+C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchange\CommodityExchange\bin\Debug\CommodityExchange.exe
+C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchange\CommodityExchange\bin\Debug\CommodityExchange.pdb
+C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchange\CommodityExchange\obj\Debug\CommodityExchange.csprojAssemblyReference.cache
+C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchange\CommodityExchange\obj\Debug\CommodityExchange.Form1.resources
+C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchange\CommodityExchange\obj\Debug\CommodityExchange.Properties.Resources.resources
+C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchange\CommodityExchange\obj\Debug\CommodityExchange.csproj.GenerateResource.cache
+C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchange\CommodityExchange\obj\Debug\CommodityExchange.csproj.CoreCompileInputs.cache
+C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchange\CommodityExchange\obj\Debug\CommodityExchange.exe
+C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchange\CommodityExchange\obj\Debug\CommodityExchange.pdb
+C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchange\CommodityExchange\bin\Debug\CommodityExchangeLibrary.dll
+C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchange\CommodityExchange\bin\Debug\CommodityExchangeLibrary.pdb
+C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchange\CommodityExchange\obj\Debug\CommodityExchange.csproj.CopyComplete
