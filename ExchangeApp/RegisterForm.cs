@@ -79,6 +79,7 @@ namespace ExchangeApp
             exchange.Save();
             MainForm main = new MainForm();
             main.Show();
+            main.currentUser = newUser;
             this.Hide();
 
         }

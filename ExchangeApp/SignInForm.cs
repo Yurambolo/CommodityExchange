@@ -41,7 +41,9 @@ namespace ExchangeApp
                             }
                         }
                         MainForm main = new MainForm();
+                        main.currentUser = user;
                         main.Show();
+                        main.currentUser = user;
                         this.Hide();
                     }
                     else

@@ -31,5 +31,36 @@ namespace CommodityExchange.Models
             new Dao(this).Load();
         }
 
+        public Product FindProductById(Guid Id)
+        {
+            foreach (Product product in Products)
+            {
+                if (product.Id == Id)
+                    return product;
+            }
+            throw new Exception("Product Not Found");
+        }
+
+        public User FindUserById(Guid Id)
+        {
+            foreach (User user in Users)
+            {
+                if (user.Id == Id)
+                    return user;
+            }
+            throw new Exception("User Not Found");
+        }
+
+        public Order FindOrderById(Guid Id)
+        {
+            foreach (Order order in Orders)
+            {
+                if (order.Id == Id)
+                    return order;
+            }
+            throw new Exception("ProductNotFound");
+        }
+
+
     }
 }

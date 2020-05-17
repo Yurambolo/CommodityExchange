@@ -16,38 +16,40 @@ namespace ExchangeApp
     {
 
         Exchange exchange = new Exchange();
+        public User currentUser;
 
         public MainForm()
         {
             InitializeComponent();
         }
 
+        private void CatalogueUpdate()
+        {
+            CatalogueGridView.Rows.Clear();
+            foreach (Product product in exchange.Products)
+            {
+                string[] row = { product.Id.ToString(), product.Name, product.Unit, product.RetailPrice.ToString(), product.WholePrice.ToString(), product.MinimalWhole.ToString(), product.Stock.ToString(), product.SellerId.ToString() };
+                CatalogueGridView.Rows.Add(row);
+            }
+        }
+
+        private void MyProductsUpdate()
+        {
+            MyProductsGridView.Rows.Clear();
+            foreach (Product product in exchange.Products)
+            {
+                if (product.SellerId == currentUser.Id)
+                {
+                    string[] row = { product.Id.ToString(), product.Name, product.Unit, product.RetailPrice.ToString(), product.WholePrice.ToString(), product.MinimalWhole.ToString(), product.Stock.ToString(), product.SellerId.ToString() };
+                    MyProductsGridView.Rows.Add(row);
+                }
+            }
+        }
+
         private void exchangeBindingSource_CurrentChanged(object sender, EventArgs e)
         {
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //exchange.Load();
-            //exchange.Users.Add(new User("Vasya","123","0123189","123@mail.ru"));
-            //exchange.Users.Add(new User("Fedya", "321", "9172983", "321@mail.ru"));
-            //exchange.Products.Add(new Product("1", "in", 400, 300, 12, 100, exchange.Users[0].Id));
-            //exchange.Orders.Add(new Order(exchange.Users[0].Id, exchange.Users[1].Id, exchange.Products[0].Id, 2, "123"));
-            //foreach (Product product in exchange.Products)
-            //{
-            //    Console.WriteLine(product.Id);
-            //    Console.WriteLine(product.Name);
-            //    Console.WriteLine(product.RetailPrice);
-            //    Console.WriteLine(product.WholePrice);
-            //    Console.WriteLine(product.Unit);
-            //    Console.WriteLine(product.MinimalWhole);
-            //}
-            exchange.Save();
-            Dao1 dao1 = new Dao1(exchange);
-            dao1.Save();
-            productBindingSource.DataSource = exchange.Products;
-        }
+        }               
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -58,9 +60,8 @@ namespace ExchangeApp
         private void MainForm_Load(object sender, EventArgs e)
         {
             exchange.Load();
-            productBindingSource.DataSource = exchange.Products;
-            orderBindingSource.DataSource = exchange.Orders;
-            Console.WriteLine(dataGridView2.Columns[0].Visible);
+            CatalogueUpdate();
+            MyProductsUpdate();            
         }
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -69,5 +70,58 @@ namespace ExchangeApp
             sig.Show();
             this.Hide();
         }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            exchange.Save();
+            Dao1 dao1 = new Dao1(exchange);
+            dao1.Save();
+        }
+
+        private void CatalogueGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Product currentProduct = exchange.Products[e.RowIndex];
+            User seller = exchange.FindUserById(currentProduct.SellerId);
+            ShowProductForm spf = new ShowProductForm(currentProduct, seller);
+            spf.Show();
+        }
+
+        private void MyProductsGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Product currentProduct = exchange.Products[e.RowIndex];
+            User seller = exchange.FindUserById(currentProduct.SellerId);
+            ShowProductForm spf = new ShowProductForm(currentProduct, seller);
+            spf.Show();
+        }
+
+        private void addProductToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NewProductForm npf = new NewProductForm(currentUser.Id);
+            npf.ShowDialog();
+            if (npf.DialogResult == DialogResult.OK)
+            {
+                exchange.Products.Add(npf.ReturnData());
+                CatalogueUpdate();
+                MyProductsUpdate();
+            }
+        }
+
+        private void showCurrentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            if (tabControl1.SelectedIndex != 2)
+            {
+                Product currentProduct;
+                if (tabControl1.SelectedIndex == 0)
+                    currentProduct = exchange.Products[CatalogueGridView.CurrentRow.Index];
+                else
+                    currentProduct = exchange.Products[MyProductsGridView.CurrentRow.Index];
+                User seller = exchange.FindUserById(currentProduct.SellerId);
+                ShowProductForm spf = new ShowProductForm(currentProduct, seller);
+                spf.Show();
+            }
+        }
+
+        
     }
 }

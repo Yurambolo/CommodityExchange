@@ -13,3 +13,6 @@ C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchang
 C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchange\ExchangeApp\obj\Debug\ExchangeApp.SignInForm.resources
 C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchange\ExchangeApp\obj\Debug\ExchangeApp.MainForm.resources
 C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchange\ExchangeApp\obj\Debug\ExchangeApp.RegisterForm.resources
+C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchange\ExchangeApp\obj\Debug\ExchangeApp.NewProductForm.resources
+C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchange\ExchangeApp\obj\Debug\ExchangeApp.ShowProductForm.resources
+C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchange\ExchangeApp\obj\Debug\ExchangeApp.ShowUserForm.resources

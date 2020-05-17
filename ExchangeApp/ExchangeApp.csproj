@@ -52,11 +52,29 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewProductForm.Designer.cs">
+      <DependentUpon>NewProductForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowProductForm.Designer.cs">
+      <DependentUpon>ShowProductForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowUserForm.Designer.cs">
+      <DependentUpon>ShowUserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SignInForm.cs">
       <SubType>Form</SubType>
@@ -66,8 +84,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="NewProductForm.resx">
+      <DependentUpon>NewProductForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowProductForm.resx">
+      <DependentUpon>ShowProductForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowUserForm.resx">
+      <DependentUpon>ShowUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SignInForm.resx">
       <DependentUpon>SignInForm.cs</DependentUpon>
