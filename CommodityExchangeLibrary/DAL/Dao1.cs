@@ -39,7 +39,7 @@ namespace CommodityExchange.DAL
                     wr.WriteLine(p.WholePrice);
                     wr.WriteLine(p.MinimalWhole);
                     wr.WriteLine(p.Stock);
-                    wr.WriteLine(p.SellerId);
+                    wr.WriteLine(p.Seller);
                 }
             }
         }
@@ -68,9 +68,9 @@ namespace CommodityExchange.DAL
                 foreach (var o in exchange.Orders)
                 {
                     wr.WriteLine(o.Id);
-                    wr.WriteLine(o.BuyerId);
-                    wr.WriteLine(o.SellerId);
-                    wr.WriteLine(o.ProductId);
+                    wr.WriteLine(o.Buyer);
+                    wr.WriteLine(o.Seller);
+                    wr.WriteLine(o.Product);
                     wr.WriteLine(o.Amount);
                     wr.WriteLine(o.PayMethod);
                     wr.WriteLine(o.DateTime);
@@ -98,11 +98,11 @@ namespace CommodityExchange.DAL
                         Id = new Guid(rd.ReadLine()),
                         Name = rd.ReadLine(),
                         Unit = rd.ReadLine(),
-                        RetailPrice = Convert.ToDecimal(rd.ReadLine()),
-                        WholePrice = Convert.ToDecimal(rd.ReadLine()),
-                        MinimalWhole = Convert.ToDecimal(rd.ReadLine()),
-                        Stock = Convert.ToDecimal(rd.ReadLine()),
-                        SellerId = new Guid(rd.ReadLine())
+                        RetailPrice = Convert.ToDouble(rd.ReadLine()),
+                        WholePrice = Convert.ToDouble(rd.ReadLine()),
+                        MinimalWhole = Convert.ToDouble(rd.ReadLine()),
+                        Stock = Convert.ToDouble(rd.ReadLine()),
+                        //Seller = new Guid(rd.ReadLine())
                     });
                 }
             }
@@ -139,9 +139,9 @@ namespace CommodityExchange.DAL
                     exchange.Orders.Add(new Order
                     {
                         Id = new Guid(rd.ReadLine()),
-                        BuyerId = new Guid(rd.ReadLine()),
-                        SellerId = new Guid(rd.ReadLine()),
-                        ProductId = new Guid(rd.ReadLine()),
+                        //Buyer = new Guid(rd.ReadLine()),
+                        //Seller = new Guid(rd.ReadLine()),
+                        //Product = new Guid(rd.ReadLine()),
                         Amount = Convert.ToInt32(rd.ReadLine()),
                         PayMethod = rd.ReadLine(),
                         DateTime = Convert.ToDateTime(rd.ReadLine())

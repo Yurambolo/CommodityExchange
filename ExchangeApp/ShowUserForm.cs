@@ -13,18 +13,18 @@ namespace ExchangeApp
 {
     public partial class ShowUserForm : Form
     {
-        User user;
+        public User currentUser;
         public ShowUserForm(User user)
         {
             InitializeComponent();
-            this.user = user;
+            this.currentUser = user;
         }
 
         private void ShowUserForm_Load(object sender, EventArgs e)
         {
-            NameTextBox.Text = user.Name;
-            PhoneTextBox.Text = user.Phone;
-            EmailTextBox.Text = user.Email;
+            NameTextBox.Text = currentUser.Name;
+            PhoneTextBox.Text = currentUser.Phone;
+            EmailTextBox.Text = currentUser.Email;
         }
     }
 }

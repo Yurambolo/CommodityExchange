@@ -4,3 +4,9 @@ C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchang
 C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchange\CommodityExchangeLibrary\bin\Debug\CommodityExchangeLibrary.pdb
 C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchange\CommodityExchangeLibrary\obj\Debug\CommodityExchangeLibrary.dll
 C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchange\CommodityExchangeLibrary\obj\Debug\CommodityExchangeLibrary.pdb
+C:\Users\User\Мусор (а может и нет)\1 курс\Курсач\CommodityExchange\CommodityExchangeLibrary\bin\Debug\CommodityExchangeLibrary.dll
+C:\Users\User\Мусор (а может и нет)\1 курс\Курсач\CommodityExchange\CommodityExchangeLibrary\bin\Debug\CommodityExchangeLibrary.pdb
+C:\Users\User\Мусор (а может и нет)\1 курс\Курсач\CommodityExchange\CommodityExchangeLibrary\obj\Debug\CommodityExchangeLibrary.csprojAssemblyReference.cache
+C:\Users\User\Мусор (а может и нет)\1 курс\Курсач\CommodityExchange\CommodityExchangeLibrary\obj\Debug\CommodityExchangeLibrary.csproj.CoreCompileInputs.cache
+C:\Users\User\Мусор (а может и нет)\1 курс\Курсач\CommodityExchange\CommodityExchangeLibrary\obj\Debug\CommodityExchangeLibrary.dll
+C:\Users\User\Мусор (а может и нет)\1 курс\Курсач\CommodityExchange\CommodityExchangeLibrary\obj\Debug\CommodityExchangeLibrary.pdb

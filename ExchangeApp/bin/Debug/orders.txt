@@ -1,8 +1,15 @@
-1
-37818757-e0e1-4acf-979d-6f29f681682d
-863eab27-8386-4aaf-aae5-8c28167ddeea
-668cabbf-3386-4d8e-8c0e-67d8feeaf35a
-adf5b9ba-0bf6-4253-8018-f9b4ae5c591f
 2
-123
-16.05.2020 21:25:50
+aaced7ce-e55b-4e41-8e0a-f16fad6eac43
+CommodityExchange.Models.User
+CommodityExchange.Models.User
+CommodityExchange.Models.Product
+2
+Non-cash payment
+22.05.2020 18:00:05
+49915f14-898e-4014-974e-c56b76af48a6
+CommodityExchange.Models.User
+CommodityExchange.Models.User
+CommodityExchange.Models.Product
+3
+Cash payment
+22.05.2020 18:00:26

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,15 +13,16 @@ namespace CommodityExchange.Models
         public Guid Id { set; get; }
         public string Name { set; get; }
         public string Unit { set; get; }
-        public decimal RetailPrice { set; get; }
-        public decimal WholePrice { set; get; }
-        public decimal MinimalWhole { set; get; }
-        public decimal Stock { set; get; }
-        public Guid SellerId { set; get; }
+        public double RetailPrice { set; get; }
+        public double WholePrice { set; get; }
+        public double MinimalWhole { set; get; }
+        public double Stock { set; get; }
+        public User Seller { set; get; } 
+        public Image Image { set; get; }
 
         public Product() { }
 
-        public Product(string name, string unit, decimal retailPrice, decimal wholePrice, decimal minimalWhole, decimal stock, Guid seller)
+        public Product(string name, string unit, double retailPrice, double wholePrice, double minimalWhole, double stock, User seller, Image image)
         {
             Id = Guid.NewGuid();
             Name = name;
@@ -29,10 +31,11 @@ namespace CommodityExchange.Models
             WholePrice = wholePrice;
             MinimalWhole = minimalWhole;
             Stock = stock;
-            SellerId = seller;
+            Seller = seller;
+            Image = image;
         }
 
-        public Product(Guid id, string name, string unit, decimal retailPrice, decimal wholePrice, decimal minimalWhole, decimal stock, Guid seller)
+        public Product(Guid id, string name, string unit, double retailPrice, double wholePrice, double minimalWhole, double stock, User seller, Image image)
         {
             Id = id;
             Name = name;
@@ -41,7 +44,8 @@ namespace CommodityExchange.Models
             WholePrice = wholePrice;
             MinimalWhole = minimalWhole;
             Stock = stock;
-            SellerId = seller;
+            Seller = seller;
+            Image = image;
         }
     }
 }

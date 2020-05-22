@@ -16,3 +16,22 @@ C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchang
 C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchange\ExchangeApp\obj\Debug\ExchangeApp.NewProductForm.resources
 C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchange\ExchangeApp\obj\Debug\ExchangeApp.ShowProductForm.resources
 C:\Users\User\Мусор (а может и нет)\Курсач\CommodityExchange\ExchangeApp\obj\Debug\ExchangeApp.ShowUserForm.resources
+C:\Users\User\Мусор (а может и нет)\1 курс\Курсач\CommodityExchange\ExchangeApp\bin\Debug\ExchangeApp.exe.config
+C:\Users\User\Мусор (а может и нет)\1 курс\Курсач\CommodityExchange\ExchangeApp\bin\Debug\ExchangeApp.exe
+C:\Users\User\Мусор (а может и нет)\1 курс\Курсач\CommodityExchange\ExchangeApp\bin\Debug\ExchangeApp.pdb
+C:\Users\User\Мусор (а может и нет)\1 курс\Курсач\CommodityExchange\ExchangeApp\bin\Debug\CommodityExchangeLibrary.dll
+C:\Users\User\Мусор (а может и нет)\1 курс\Курсач\CommodityExchange\ExchangeApp\bin\Debug\CommodityExchangeLibrary.pdb
+C:\Users\User\Мусор (а может и нет)\1 курс\Курсач\CommodityExchange\ExchangeApp\obj\Debug\ExchangeApp.csprojAssemblyReference.cache
+C:\Users\User\Мусор (а может и нет)\1 курс\Курсач\CommodityExchange\ExchangeApp\obj\Debug\ExchangeApp.NewProductForm.resources
+C:\Users\User\Мусор (а может и нет)\1 курс\Курсач\CommodityExchange\ExchangeApp\obj\Debug\ExchangeApp.RegisterForm.resources
+C:\Users\User\Мусор (а может и нет)\1 курс\Курсач\CommodityExchange\ExchangeApp\obj\Debug\ExchangeApp.ShowProductForm.resources
+C:\Users\User\Мусор (а может и нет)\1 курс\Курсач\CommodityExchange\ExchangeApp\obj\Debug\ExchangeApp.ShowUserForm.resources
+C:\Users\User\Мусор (а может и нет)\1 курс\Курсач\CommodityExchange\ExchangeApp\obj\Debug\ExchangeApp.SignInForm.resources
+C:\Users\User\Мусор (а может и нет)\1 курс\Курсач\CommodityExchange\ExchangeApp\obj\Debug\ExchangeApp.MainForm.resources
+C:\Users\User\Мусор (а может и нет)\1 курс\Курсач\CommodityExchange\ExchangeApp\obj\Debug\ExchangeApp.Properties.Resources.resources
+C:\Users\User\Мусор (а может и нет)\1 курс\Курсач\CommodityExchange\ExchangeApp\obj\Debug\ExchangeApp.csproj.GenerateResource.cache
+C:\Users\User\Мусор (а может и нет)\1 курс\Курсач\CommodityExchange\ExchangeApp\obj\Debug\ExchangeApp.csproj.CoreCompileInputs.cache
+C:\Users\User\Мусор (а может и нет)\1 курс\Курсач\CommodityExchange\ExchangeApp\obj\Debug\ExchangeApp.csproj.CopyComplete
+C:\Users\User\Мусор (а может и нет)\1 курс\Курсач\CommodityExchange\ExchangeApp\obj\Debug\ExchangeApp.exe
+C:\Users\User\Мусор (а может и нет)\1 курс\Курсач\CommodityExchange\ExchangeApp\obj\Debug\ExchangeApp.pdb
+C:\Users\User\Мусор (а может и нет)\1 курс\Курсач\CommodityExchange\ExchangeApp\obj\Debug\ExchangeApp.NewOrderForm.resources

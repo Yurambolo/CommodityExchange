@@ -22,6 +22,7 @@ namespace ExchangeApp
 
         private void button1_Click(object sender, EventArgs e)
         {
+            exchange.Load();
             string login = LoginTextBox.Text;
             string password = PasswordTextBox.Text;
             string password2 = PasswordTextBox2.Text;
@@ -77,16 +78,28 @@ namespace ExchangeApp
             User newUser = new User(login, password, phone, email);
             exchange.Users.Add(newUser);
             exchange.Save();
-            MainForm main = new MainForm();
-            main.Show();
+            MainForm main;
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType().ToString() == "ExchangeApp.MainForm")
+                {
+                    main = (MainForm)form;
+                    main.currentUser = newUser;
+                    main.Show();
+                    main.FormUpdate();
+                    this.Hide();
+                    return;
+                }
+            }
+            main = new MainForm();
             main.currentUser = newUser;
+            main.Show();
             this.Hide();
 
         }
 
         private void RegisterForm_Load(object sender, EventArgs e)
         {
-            exchange.Load();
         }
 
         private void RegisterForm_FormClosed(object sender, FormClosedEventArgs e)

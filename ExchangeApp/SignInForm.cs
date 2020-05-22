@@ -23,6 +23,7 @@ namespace ExchangeApp
 
         private void button1_Click(object sender, EventArgs e)
         {
+            exchange.Load();
             string login = LoginTextBox.Text;
             string password = PasswordTextBox.Text;
             foreach (User user in exchange.Users)
@@ -31,19 +32,22 @@ namespace ExchangeApp
                 {
                     if (user.Password == password)
                     {
-                        foreach(Form form in Application.OpenForms)
+                        MainForm main;
+                        foreach (Form form in Application.OpenForms)
                         {
                             if (form.GetType().ToString() == "ExchangeApp.MainForm")
                             {
-                                form.Show();
+                                main = (MainForm)form;
+                                main.currentUser = user;
+                                main.Show();
+                                main.FormUpdate();
                                 this.Hide();
                                 return;
                             }
                         }
-                        MainForm main = new MainForm();
+                        main = new MainForm();
                         main.currentUser = user;
                         main.Show();
-                        main.currentUser = user;
                         this.Hide();
                     }
                     else
@@ -58,7 +62,6 @@ namespace ExchangeApp
 
         private void SignInForm_Load(object sender, EventArgs e)
         {
-            exchange.Load();
         }
 
         private void button2_Click(object sender, EventArgs e)

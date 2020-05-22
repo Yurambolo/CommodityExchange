@@ -13,31 +13,143 @@ namespace ExchangeApp
 {
     public partial class ShowProductForm : Form
     {
-        Product currentProduct;
+        public Product CurrentProduct;
         User Seller;
+        bool AllowEdit;
+        MainForm MainF;
 
-        public ShowProductForm(Product product, User seller)
+        public ShowProductForm(Product product, User seller, bool allowEdit, MainForm mainf)
         {
             InitializeComponent();
-            currentProduct = product;
+            CurrentProduct = product;
             Seller = seller;
+            AllowEdit = allowEdit;
+            MainF = mainf;
         }
 
         private void ShowProductForm_Load(object sender, EventArgs e)
         {
-            NameTextBox.Text = currentProduct.Name;
-            UnitTextBox.Text = currentProduct.Unit;
-            RetailPriceTextBox.Text = currentProduct.RetailPrice.ToString();
-            WholePriceTextBox.Text = currentProduct.WholePrice.ToString();
-            MinimalWholeTextBox.Text = currentProduct.MinimalWhole.ToString();
-            StockTextBox.Text = currentProduct.Stock.ToString();
+            NameTextBox.Text = CurrentProduct.Name;
+            UnitTextBox.Text = CurrentProduct.Unit;
+            RetailPriceTextBox.Text = CurrentProduct.RetailPrice.ToString();
+            WholePriceTextBox.Text = CurrentProduct.WholePrice.ToString();
+            MinimalWholeTextBox.Text = CurrentProduct.MinimalWhole.ToString();
+            StockTextBox.Text = CurrentProduct.Stock.ToString();
             SellerTextBox.Text = Seller.Name;
+            pictureBox1.Image = CurrentProduct.Image;
+            if (AllowEdit)
+            {
+                EditButton.Visible = true;
+                DeleteButton.Visible = true;
+                OrderButton.Visible = false;
+            }
         }
 
         private void SellerTextBox_DoubleClick(object sender, EventArgs e)
         {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType().ToString() == "ExchangeApp.ShowUserForm")
+                {
+                    ShowUserForm Suf = (ShowUserForm)form;
+                    if (Suf.currentUser.Id == Seller.Id)
+                    {
+                        Suf.Show();
+                        Suf.Activate();
+                        return;
+                    }
+                }
+            }
             ShowUserForm suf = new ShowUserForm(Seller);
             suf.Show();
+        }
+
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            NameTextBox.ReadOnly = false;
+            UnitTextBox.ReadOnly = false;
+            RetailPriceTextBox.ReadOnly = false;
+            WholePriceTextBox.ReadOnly = false;
+            MinimalWholeTextBox.ReadOnly = false;
+            StockTextBox.ReadOnly = false;
+            pictureBox1.Enabled = true;
+            EditButton.Enabled = false;
+            SaveButton.Visible = true;
+            CancelButton.Visible = true;
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            NameTextBox.Text = CurrentProduct.Name;
+            UnitTextBox.Text = CurrentProduct.Unit;
+            RetailPriceTextBox.Text = CurrentProduct.RetailPrice.ToString();
+            WholePriceTextBox.Text = CurrentProduct.WholePrice.ToString();
+            MinimalWholeTextBox.Text = CurrentProduct.MinimalWhole.ToString();
+            StockTextBox.Text = CurrentProduct.Stock.ToString();
+            pictureBox1.Image = CurrentProduct.Image;
+            NameTextBox.ReadOnly = true;
+            UnitTextBox.ReadOnly = true;
+            RetailPriceTextBox.ReadOnly = true;
+            WholePriceTextBox.ReadOnly = true;
+            MinimalWholeTextBox.ReadOnly = true;
+            StockTextBox.ReadOnly = true;
+            pictureBox1.Enabled = false;
+            EditButton.Enabled = true;
+            SaveButton.Visible = false;
+            CancelButton.Visible = false;
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            CurrentProduct.Name = NameTextBox.Text;
+            CurrentProduct.Unit = UnitTextBox.Text;
+            CurrentProduct.RetailPrice = Convert.ToDouble(RetailPriceTextBox.Text);
+            CurrentProduct.WholePrice = Convert.ToDouble(WholePriceTextBox.Text);
+            CurrentProduct.MinimalWhole = Convert.ToDouble(MinimalWholeTextBox.Text);
+            CurrentProduct.Stock = Convert.ToDouble(StockTextBox.Text);
+            CurrentProduct.Image = pictureBox1.Image;
+            NameTextBox.ReadOnly = true;
+            UnitTextBox.ReadOnly = true;
+            RetailPriceTextBox.ReadOnly = true;
+            WholePriceTextBox.ReadOnly = true;
+            MinimalWholeTextBox.ReadOnly = true;
+            StockTextBox.ReadOnly = true;
+            pictureBox1.Enabled = false;
+            EditButton.Enabled = true;
+            SaveButton.Visible = false;
+            CancelButton.Visible = false;
+            MainF.CatalogueUpdate();
+            MainF.MyProductsUpdate();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.Image = new Bitmap(openFileDialog1.FileName);
+            }
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            MainF.CatalogueUpdate();
+            MainF.MyProductsUpdate();
+            this.Close();
+        }
+
+        private void OrderButton_Click(object sender, EventArgs e)
+        {
+            NewOrderForm nof = new NewOrderForm(Seller, MainF.currentUser, CurrentProduct);
+            nof.ShowDialog();
+            if (nof.DialogResult == DialogResult.OK)
+            {
+                Order order = nof.ReturnData();
+                MainF.exchange.Orders.Add(order);
+                CurrentProduct.Stock -= order.Amount;
+                MainF.CatalogueUpdate();
+                MainF.MyProductsUpdate();
+                MainF.MyOrdersUpdate();
+            }
         }
     }
 }

@@ -10,22 +10,24 @@ namespace CommodityExchange.Models
     public class Order
     {
         public Guid Id { set; get; }
-        public Guid BuyerId { set; get; }
-        public Guid SellerId { set; get; }
-        public Guid ProductId { set; get; }
+        public User Buyer { set; get; }
+        public User Seller { set; get; }
+        public Product Product { set; get; }
         public double Amount { set; get; }
+        public double Price { set; get; }
         public DateTime DateTime { set; get; }
         public string PayMethod { set; get; }
 
         public Order() { }
 
-        public Order(Guid buyer, Guid seller, Guid product, double amount, string paymethod, DateTime? t = null)
+        public Order(User buyer, User seller, Product product, double amount, double price, string paymethod, DateTime? t = null)
         {
             Id = Guid.NewGuid();
-            BuyerId = buyer;
-            SellerId = seller;
-            ProductId = product;
+            Buyer = buyer;
+            Seller = seller;
+            Product = product;
             Amount = amount;
+            Price = price;
             PayMethod = paymethod;
             if (t == null)
                 DateTime = DateTime.Now;
@@ -33,13 +35,14 @@ namespace CommodityExchange.Models
                 DateTime = (DateTime)t;
         }
 
-        public Order(Guid id, Guid buyer, Guid seller, Guid product, double amount, string paymethod, DateTime? t = null)
+        public Order(Guid id, User buyer, User seller, Product product, double amount, double price, string paymethod, DateTime? t = null)
         {
             Id = id;
-            BuyerId = buyer;
-            SellerId = seller;
-            ProductId = product;
+            Buyer = buyer;
+            Seller = seller;
+            Product = product;
             Amount = amount;
+            Price = price;
             PayMethod = paymethod;
             if (t == null)
                 DateTime = DateTime.Now;
