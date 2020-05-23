@@ -84,6 +84,7 @@
             this.StockTextBox.Name = "StockTextBox";
             this.StockTextBox.Size = new System.Drawing.Size(153, 22);
             this.StockTextBox.TabIndex = 5;
+            this.StockTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label3
             // 
@@ -100,6 +101,7 @@
             this.RetailPriceTextBox.Name = "RetailPriceTextBox";
             this.RetailPriceTextBox.Size = new System.Drawing.Size(153, 22);
             this.RetailPriceTextBox.TabIndex = 7;
+            this.RetailPriceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label4
             // 
@@ -116,6 +118,7 @@
             this.WholePriceTextBox.Name = "WholePriceTextBox";
             this.WholePriceTextBox.Size = new System.Drawing.Size(153, 22);
             this.WholePriceTextBox.TabIndex = 9;
+            this.WholePriceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label5
             // 
@@ -132,6 +135,7 @@
             this.MinimalWholeTextBox.Name = "MinimalWholeTextBox";
             this.MinimalWholeTextBox.Size = new System.Drawing.Size(153, 22);
             this.MinimalWholeTextBox.TabIndex = 11;
+            this.MinimalWholeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label6
             // 

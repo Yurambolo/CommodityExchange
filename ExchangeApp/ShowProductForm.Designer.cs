@@ -59,6 +59,7 @@
             this.MinimalWholeTextBox.ReadOnly = true;
             this.MinimalWholeTextBox.Size = new System.Drawing.Size(153, 22);
             this.MinimalWholeTextBox.TabIndex = 23;
+            this.MinimalWholeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label6
             // 
@@ -76,6 +77,7 @@
             this.WholePriceTextBox.ReadOnly = true;
             this.WholePriceTextBox.Size = new System.Drawing.Size(153, 22);
             this.WholePriceTextBox.TabIndex = 21;
+            this.WholePriceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label5
             // 
@@ -93,6 +95,7 @@
             this.RetailPriceTextBox.ReadOnly = true;
             this.RetailPriceTextBox.Size = new System.Drawing.Size(153, 22);
             this.RetailPriceTextBox.TabIndex = 19;
+            this.RetailPriceTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label4
             // 
@@ -110,6 +113,7 @@
             this.StockTextBox.ReadOnly = true;
             this.StockTextBox.Size = new System.Drawing.Size(153, 22);
             this.StockTextBox.TabIndex = 17;
+            this.StockTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label3
             // 
@@ -163,7 +167,6 @@
             this.SellerTextBox.ReadOnly = true;
             this.SellerTextBox.Size = new System.Drawing.Size(153, 22);
             this.SellerTextBox.TabIndex = 25;
-            this.SellerTextBox.Text = "123";
             this.SellerTextBox.DoubleClick += new System.EventHandler(this.SellerTextBox_DoubleClick);
             // 
             // label7
@@ -225,6 +228,7 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "Image files (*.png)|*.png|Image files (*.jpg)|*.jpg";
             // 
             // DeleteButton
             // 

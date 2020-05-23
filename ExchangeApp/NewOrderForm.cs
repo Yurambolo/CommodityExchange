@@ -34,7 +34,19 @@ namespace ExchangeApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
+            if (!(PayMethodComboBox.SelectedItem == null) && !String.IsNullOrWhiteSpace(PriceTextBox.Text) && !(PriceTextBox.Text[0] == ',') && !(PriceTextBox.Text[PriceTextBox.TextLength - 1] == ','))
+                this.DialogResult = DialogResult.OK;
+            else
+            {
+                string message = "Fill all the fields";
+                string caption = "Error Detected in Input";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result;
+
+                // Displays the MessageBox.
+                result = MessageBox.Show(message, caption, buttons);
+                return;
+            }
         }
 
         public Order ReturnData()
@@ -44,11 +56,25 @@ namespace ExchangeApp
 
         private void AmountTextBox_TextChanged(object sender, EventArgs e)
         {
-            double amount = Convert.ToDouble(AmountTextBox.Text);
+            double amount;
+            if (AmountTextBox.Text == "" || AmountTextBox.Text[0] == ',' || AmountTextBox.Text[AmountTextBox.TextLength - 1] == ',')
+                amount = 0;
+            else
+                amount = Convert.ToDouble(AmountTextBox.Text);
             if (amount < Product.MinimalWhole)
                 PriceTextBox.Text = (amount * Product.RetailPrice).ToString();
             else
                 PriceTextBox.Text = (amount * Product.WholePrice).ToString();
+        }
+
+        private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            var tb = (TextBox)sender;
+            if (tb.Text.Contains(',') && ch == ',')
+                e.Handled = true;
+            if (!Char.IsDigit(ch) && ch != 8 && ch != ',')
+                e.Handled = true;
         }
     }
 }

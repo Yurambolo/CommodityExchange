@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Drawing;
 using System.Windows.Forms;
 using CommodityExchange.Models;
 using CommodityExchange.DAL;
@@ -18,6 +17,7 @@ namespace ExchangeApp
 
         public Exchange exchange = new Exchange();
         public User currentUser;
+        public bool IsDirty = false;
 
         public MainForm()
         {
@@ -86,6 +86,28 @@ namespace ExchangeApp
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
+           DialogResult result = MessageBox.Show(
+           "Save changes before quitting?",
+           "Question",
+           MessageBoxButtons.YesNoCancel);
+
+            switch (result)
+            {
+                case DialogResult.Yes:
+                    {
+                        exchange.Save();
+                        IsDirty = false;
+                        break;
+                    }
+                case DialogResult.No:
+                    {
+                        break;
+                    }
+                case DialogResult.Cancel:
+                    {
+                        return;
+                    }
+            }
             SignInForm sig = (SignInForm)Application.OpenForms[0];
             sig.Show();
             this.Hide();
@@ -94,8 +116,7 @@ namespace ExchangeApp
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             exchange.Save();
-            Dao1 dao1 = new Dao1(exchange);
-            dao1.Save();
+            IsDirty = false;
         }
 
         private void CatalogueGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -149,6 +170,7 @@ namespace ExchangeApp
                 exchange.Products.Add(npf.ReturnData());
                 CatalogueUpdate();
                 MyProductsUpdate();
+                IsDirty = true;
             }
         }
 
@@ -184,6 +206,38 @@ namespace ExchangeApp
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+            "Save changes before quitting?",
+            "Question",
+            MessageBoxButtons.YesNoCancel);
+
+            switch (result)
+            {
+                case DialogResult.Yes:
+                    {
+                        exchange.Save();
+                        IsDirty = false;
+                        break;
+                    }
+                case DialogResult.No:
+                    {
+                        break;
+                    }
+                case DialogResult.Cancel:
+                    {
+                        e.Cancel = true;
+                        break;
+                    }
+            }
         }
     }
 }

@@ -67,6 +67,7 @@
             this.AmountTextBox.Size = new System.Drawing.Size(153, 22);
             this.AmountTextBox.TabIndex = 19;
             this.AmountTextBox.TextChanged += new System.EventHandler(this.AmountTextBox_TextChanged);
+            this.AmountTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label4
             // 
@@ -139,6 +140,7 @@
             // 
             // PayMethodComboBox
             // 
+            this.PayMethodComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PayMethodComboBox.FormattingEnabled = true;
             this.PayMethodComboBox.Items.AddRange(new object[] {
             "Cash payment",

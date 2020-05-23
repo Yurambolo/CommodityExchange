@@ -28,6 +28,39 @@ namespace ExchangeApp
             string password2 = PasswordTextBox2.Text;
             string phone = PhoneTextBox.Text;
             string email = EmailextBox.Text;
+            if (String.IsNullOrWhiteSpace(login) || String.IsNullOrWhiteSpace(password))
+            {
+                string message = "Fill all the fields";
+                string caption = "Error Detected in Input";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result;
+
+                // Displays the MessageBox.
+                result = MessageBox.Show(message, caption, buttons);
+                return;
+            }
+            if (phone.Length < 10 || phone.Length > 13)
+            {
+                string message = "Phone number format should be '+380*********'";
+                string caption = "Error Detected in Input";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result;
+
+                // Displays the MessageBox.
+                result = MessageBox.Show(message, caption, buttons);
+                return;
+            }
+            if (email.IndexOf("@") < 1 || email.LastIndexOf('@') != email.IndexOf("@"))
+            {
+                string message = "E-mail format should be 'example@rambler.com'";
+                string caption = "Error Detected in Input";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result;
+
+                // Displays the MessageBox.
+                result = MessageBox.Show(message, caption, buttons);
+                return;
+            }
             if (password != password2)
             {
                 string message = "Passwords are not the same";
@@ -113,6 +146,15 @@ namespace ExchangeApp
             SignInForm sig = (SignInForm)Application.OpenForms[0];
             sig.Show();
             this.Hide();
+        }
+
+        private void PhoneTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (PhoneTextBox.Text.Length == 1 && ch == 8)
+                e.Handled = true;
+            if (!Char.IsDigit(ch) && ch != 8)
+                e.Handled = true;            
         }
     }
 }

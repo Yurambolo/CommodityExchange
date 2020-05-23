@@ -41,8 +41,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,8 +60,6 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.MyOrdersGridView = new System.Windows.Forms.DataGridView();
-            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buyerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sellerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,6 +68,8 @@
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.payMethodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.CatalogueGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -103,6 +101,7 @@
             this.CatalogueGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CatalogueGridView.Location = new System.Drawing.Point(3, 3);
             this.CatalogueGridView.Name = "CatalogueGridView";
+            this.CatalogueGridView.ReadOnly = true;
             this.CatalogueGridView.RowTemplate.Height = 24;
             this.CatalogueGridView.Size = new System.Drawing.Size(756, 347);
             this.CatalogueGridView.TabIndex = 0;
@@ -112,6 +111,7 @@
             // 
             this.idDataGridViewTextBoxColumn2.HeaderText = "Id";
             this.idDataGridViewTextBoxColumn2.Name = "idDataGridViewTextBoxColumn2";
+            this.idDataGridViewTextBoxColumn2.ReadOnly = true;
             this.idDataGridViewTextBoxColumn2.Visible = false;
             this.idDataGridViewTextBoxColumn2.Width = 48;
             // 
@@ -119,42 +119,49 @@
             // 
             this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
             this.nameDataGridViewTextBoxColumn.Width = 74;
             // 
             // unitDataGridViewTextBoxColumn
             // 
             this.unitDataGridViewTextBoxColumn.HeaderText = "Unit";
             this.unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
+            this.unitDataGridViewTextBoxColumn.ReadOnly = true;
             this.unitDataGridViewTextBoxColumn.Width = 62;
             // 
             // retailPriceDataGridViewTextBoxColumn
             // 
             this.retailPriceDataGridViewTextBoxColumn.HeaderText = "RetailPrice";
             this.retailPriceDataGridViewTextBoxColumn.Name = "retailPriceDataGridViewTextBoxColumn";
+            this.retailPriceDataGridViewTextBoxColumn.ReadOnly = true;
             this.retailPriceDataGridViewTextBoxColumn.Width = 105;
             // 
             // wholePriceDataGridViewTextBoxColumn
             // 
             this.wholePriceDataGridViewTextBoxColumn.HeaderText = "WholePrice";
             this.wholePriceDataGridViewTextBoxColumn.Name = "wholePriceDataGridViewTextBoxColumn";
+            this.wholePriceDataGridViewTextBoxColumn.ReadOnly = true;
             this.wholePriceDataGridViewTextBoxColumn.Width = 109;
             // 
             // minimalWholeDataGridViewTextBoxColumn
             // 
             this.minimalWholeDataGridViewTextBoxColumn.HeaderText = "MinimalWhole";
             this.minimalWholeDataGridViewTextBoxColumn.Name = "minimalWholeDataGridViewTextBoxColumn";
+            this.minimalWholeDataGridViewTextBoxColumn.ReadOnly = true;
             this.minimalWholeDataGridViewTextBoxColumn.Width = 124;
             // 
             // stockDataGridViewTextBoxColumn
             // 
             this.stockDataGridViewTextBoxColumn.HeaderText = "Stock";
             this.stockDataGridViewTextBoxColumn.Name = "stockDataGridViewTextBoxColumn";
+            this.stockDataGridViewTextBoxColumn.ReadOnly = true;
             this.stockDataGridViewTextBoxColumn.Width = 72;
             // 
             // sellerIdDataGridViewTextBoxColumn2
             // 
             this.sellerIdDataGridViewTextBoxColumn2.HeaderText = "Seller";
             this.sellerIdDataGridViewTextBoxColumn2.Name = "sellerIdDataGridViewTextBoxColumn2";
+            this.sellerIdDataGridViewTextBoxColumn2.ReadOnly = true;
             this.sellerIdDataGridViewTextBoxColumn2.Visible = false;
             this.sellerIdDataGridViewTextBoxColumn2.Width = 73;
             // 
@@ -163,7 +170,6 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.editToolStripMenuItem,
             this.accountToolStripMenuItem,
             this.productsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -175,8 +181,7 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveToolStripMenuItem,
-            this.loadToolStripMenuItem});
+            this.saveToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
             this.fileToolStripMenuItem.Text = "File";
@@ -184,22 +189,10 @@
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(117, 26);
+            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
-            // 
-            // loadToolStripMenuItem
-            // 
-            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(117, 26);
-            this.loadToolStripMenuItem.Text = "Load";
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(47, 24);
-            this.editToolStripMenuItem.Text = "Edit";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // accountToolStripMenuItem
             // 
@@ -291,6 +284,7 @@
             this.MyProductsGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MyProductsGridView.Location = new System.Drawing.Point(3, 3);
             this.MyProductsGridView.Name = "MyProductsGridView";
+            this.MyProductsGridView.ReadOnly = true;
             this.MyProductsGridView.RowTemplate.Height = 24;
             this.MyProductsGridView.Size = new System.Drawing.Size(756, 347);
             this.MyProductsGridView.TabIndex = 1;
@@ -300,6 +294,7 @@
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "Id";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Visible = false;
             this.dataGridViewTextBoxColumn1.Width = 48;
             // 
@@ -307,42 +302,49 @@
             // 
             this.dataGridViewTextBoxColumn2.HeaderText = "Name";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.Width = 74;
             // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.HeaderText = "Unit";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.Width = 62;
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.HeaderText = "RetailPrice";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.Width = 105;
             // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.HeaderText = "WholePrice";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
             this.dataGridViewTextBoxColumn5.Width = 109;
             // 
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.HeaderText = "MinimalWhole";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             this.dataGridViewTextBoxColumn6.Width = 124;
             // 
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.HeaderText = "Stock";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
             this.dataGridViewTextBoxColumn7.Width = 72;
             // 
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.HeaderText = "Seller";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
             this.dataGridViewTextBoxColumn8.Visible = false;
             this.dataGridViewTextBoxColumn8.Width = 73;
             // 
@@ -376,9 +378,67 @@
             this.MyOrdersGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MyOrdersGridView.Location = new System.Drawing.Point(3, 3);
             this.MyOrdersGridView.Name = "MyOrdersGridView";
+            this.MyOrdersGridView.ReadOnly = true;
             this.MyOrdersGridView.RowTemplate.Height = 24;
             this.MyOrdersGridView.Size = new System.Drawing.Size(756, 347);
             this.MyOrdersGridView.TabIndex = 2;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            this.idDataGridViewTextBoxColumn.Width = 48;
+            // 
+            // buyerDataGridViewTextBoxColumn
+            // 
+            this.buyerDataGridViewTextBoxColumn.HeaderText = "Buyer";
+            this.buyerDataGridViewTextBoxColumn.Name = "buyerDataGridViewTextBoxColumn";
+            this.buyerDataGridViewTextBoxColumn.ReadOnly = true;
+            this.buyerDataGridViewTextBoxColumn.Width = 74;
+            // 
+            // sellerDataGridViewTextBoxColumn
+            // 
+            this.sellerDataGridViewTextBoxColumn.HeaderText = "Seller";
+            this.sellerDataGridViewTextBoxColumn.Name = "sellerDataGridViewTextBoxColumn";
+            this.sellerDataGridViewTextBoxColumn.ReadOnly = true;
+            this.sellerDataGridViewTextBoxColumn.Width = 73;
+            // 
+            // productDataGridViewTextBoxColumn
+            // 
+            this.productDataGridViewTextBoxColumn.HeaderText = "Product";
+            this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
+            this.productDataGridViewTextBoxColumn.ReadOnly = true;
+            this.productDataGridViewTextBoxColumn.Width = 86;
+            // 
+            // amountDataGridViewTextBoxColumn
+            // 
+            this.amountDataGridViewTextBoxColumn.HeaderText = "Amount";
+            this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
+            this.amountDataGridViewTextBoxColumn.ReadOnly = true;
+            this.amountDataGridViewTextBoxColumn.Width = 85;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            this.priceDataGridViewTextBoxColumn.Width = 69;
+            // 
+            // dateTimeDataGridViewTextBoxColumn
+            // 
+            this.dateTimeDataGridViewTextBoxColumn.HeaderText = "DateTime";
+            this.dateTimeDataGridViewTextBoxColumn.Name = "dateTimeDataGridViewTextBoxColumn";
+            this.dateTimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dateTimeDataGridViewTextBoxColumn.Width = 98;
+            // 
+            // payMethodDataGridViewTextBoxColumn
+            // 
+            this.payMethodDataGridViewTextBoxColumn.HeaderText = "PayMethod";
+            this.payMethodDataGridViewTextBoxColumn.Name = "payMethodDataGridViewTextBoxColumn";
+            this.payMethodDataGridViewTextBoxColumn.ReadOnly = true;
+            this.payMethodDataGridViewTextBoxColumn.Width = 108;
             // 
             // productBindingSource
             // 
@@ -387,55 +447,6 @@
             // orderBindingSource
             // 
             this.orderBindingSource.DataSource = typeof(CommodityExchange.Models.Order);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.Visible = false;
-            this.idDataGridViewTextBoxColumn.Width = 48;
-            // 
-            // buyerDataGridViewTextBoxColumn
-            // 
-            this.buyerDataGridViewTextBoxColumn.HeaderText = "Buyer";
-            this.buyerDataGridViewTextBoxColumn.Name = "buyerDataGridViewTextBoxColumn";
-            this.buyerDataGridViewTextBoxColumn.Width = 74;
-            // 
-            // sellerDataGridViewTextBoxColumn
-            // 
-            this.sellerDataGridViewTextBoxColumn.HeaderText = "Seller";
-            this.sellerDataGridViewTextBoxColumn.Name = "sellerDataGridViewTextBoxColumn";
-            this.sellerDataGridViewTextBoxColumn.Width = 73;
-            // 
-            // productDataGridViewTextBoxColumn
-            // 
-            this.productDataGridViewTextBoxColumn.HeaderText = "Product";
-            this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
-            this.productDataGridViewTextBoxColumn.Width = 86;
-            // 
-            // amountDataGridViewTextBoxColumn
-            // 
-            this.amountDataGridViewTextBoxColumn.HeaderText = "Amount";
-            this.amountDataGridViewTextBoxColumn.Name = "amountDataGridViewTextBoxColumn";
-            this.amountDataGridViewTextBoxColumn.Width = 85;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.Width = 69;
-            // 
-            // dateTimeDataGridViewTextBoxColumn
-            // 
-            this.dateTimeDataGridViewTextBoxColumn.HeaderText = "DateTime";
-            this.dateTimeDataGridViewTextBoxColumn.Name = "dateTimeDataGridViewTextBoxColumn";
-            this.dateTimeDataGridViewTextBoxColumn.Width = 98;
-            // 
-            // payMethodDataGridViewTextBoxColumn
-            // 
-            this.payMethodDataGridViewTextBoxColumn.HeaderText = "PayMethod";
-            this.payMethodDataGridViewTextBoxColumn.Name = "payMethodDataGridViewTextBoxColumn";
-            this.payMethodDataGridViewTextBoxColumn.Width = 108;
             // 
             // MainForm
             // 
@@ -447,6 +458,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.CatalogueGridView)).EndInit();
@@ -475,8 +487,6 @@
         private System.Windows.Forms.BindingSource productBindingSource;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem accountToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
         private System.Windows.Forms.BindingSource orderBindingSource;

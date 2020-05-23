@@ -26,38 +26,66 @@ namespace ExchangeApp
             exchange.Load();
             string login = LoginTextBox.Text;
             string password = PasswordTextBox.Text;
-            foreach (User user in exchange.Users)
+            if (!String.IsNullOrWhiteSpace(login) && !String.IsNullOrWhiteSpace(password))
             {
-                if (user.Name == login)
+                foreach (User user in exchange.Users)
                 {
-                    if (user.Password == password)
+                    if (user.Name == login)
                     {
-                        MainForm main;
-                        foreach (Form form in Application.OpenForms)
+                        if (user.Password == password)
                         {
-                            if (form.GetType().ToString() == "ExchangeApp.MainForm")
+                            MainForm main;
+                            foreach (Form form in Application.OpenForms)
                             {
-                                main = (MainForm)form;
-                                main.currentUser = user;
-                                main.Show();
-                                main.FormUpdate();
-                                this.Hide();
-                                return;
+                                if (form.GetType().ToString() == "ExchangeApp.MainForm")
+                                {
+                                    main = (MainForm)form;
+                                    main.currentUser = user;
+                                    main.Show();
+                                    main.FormUpdate();
+                                    this.Hide();
+                                    return;
+                                }
                             }
+                            main = new MainForm();
+                            main.currentUser = user;
+                            main.Show();
+                            this.Hide();
                         }
-                        main = new MainForm();
-                        main.currentUser = user;
-                        main.Show();
-                        this.Hide();
+                        else
+                        {
+                            string message1 = "Incorrect password";
+                            string caption1 = "Error Detected in Input";
+                            MessageBoxButtons buttons1 = MessageBoxButtons.OK;
+                            DialogResult result1;
+
+                            // Displays the MessageBox.
+                            result1 = MessageBox.Show(message1, caption1, buttons1);
+                            return;
+                        }
+                        return;
                     }
-                    else
-                    {
-                        Console.WriteLine("Incorrect password");
-                    }
-                    return;
                 }
+                string message = "User not found";
+                string caption = "Error Detected in Input";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result;
+
+                // Displays the MessageBox.
+                result = MessageBox.Show(message, caption, buttons);
+                return;
             }
-            Console.WriteLine("User not found");
+            else
+            {
+                string message = "Fill all the fields";
+                string caption = "Error Detected in Input";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result;
+
+                // Displays the MessageBox.
+                result = MessageBox.Show(message, caption, buttons);
+                return;
+            }
         }
 
         private void SignInForm_Load(object sender, EventArgs e)
@@ -79,5 +107,6 @@ namespace ExchangeApp
             reg.Show();
             this.Hide();
         }
+
     }
 }

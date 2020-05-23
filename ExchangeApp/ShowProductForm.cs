@@ -101,25 +101,40 @@ namespace ExchangeApp
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            CurrentProduct.Name = NameTextBox.Text;
-            CurrentProduct.Unit = UnitTextBox.Text;
-            CurrentProduct.RetailPrice = Convert.ToDouble(RetailPriceTextBox.Text);
-            CurrentProduct.WholePrice = Convert.ToDouble(WholePriceTextBox.Text);
-            CurrentProduct.MinimalWhole = Convert.ToDouble(MinimalWholeTextBox.Text);
-            CurrentProduct.Stock = Convert.ToDouble(StockTextBox.Text);
-            CurrentProduct.Image = pictureBox1.Image;
-            NameTextBox.ReadOnly = true;
-            UnitTextBox.ReadOnly = true;
-            RetailPriceTextBox.ReadOnly = true;
-            WholePriceTextBox.ReadOnly = true;
-            MinimalWholeTextBox.ReadOnly = true;
-            StockTextBox.ReadOnly = true;
-            pictureBox1.Enabled = false;
-            EditButton.Enabled = true;
-            SaveButton.Visible = false;
-            CancelButton.Visible = false;
-            MainF.CatalogueUpdate();
-            MainF.MyProductsUpdate();
+            if (!String.IsNullOrWhiteSpace(NameTextBox.Text) && !String.IsNullOrWhiteSpace(UnitTextBox.Text) && !String.IsNullOrWhiteSpace(RetailPriceTextBox.Text) && !String.IsNullOrWhiteSpace(WholePriceTextBox.Text) && !String.IsNullOrWhiteSpace(MinimalWholeTextBox.Text) && !String.IsNullOrWhiteSpace(StockTextBox.Text) && !(RetailPriceTextBox.Text[0] == ',') && !(RetailPriceTextBox.Text[RetailPriceTextBox.TextLength - 1] == ',') && !(WholePriceTextBox.Text[0] == ',') && !(WholePriceTextBox.Text[WholePriceTextBox.TextLength - 1] == ',') && !(MinimalWholeTextBox.Text[0] == ',') && !(MinimalWholeTextBox.Text[MinimalWholeTextBox.TextLength - 1] == ',') && !(StockTextBox.Text[0] == ',') && !(StockTextBox.Text[StockTextBox.TextLength - 1] == ','))
+            {
+                CurrentProduct.Name = NameTextBox.Text;
+                CurrentProduct.Unit = UnitTextBox.Text;
+                CurrentProduct.RetailPrice = Convert.ToDouble(RetailPriceTextBox.Text);
+                CurrentProduct.WholePrice = Convert.ToDouble(WholePriceTextBox.Text);
+                CurrentProduct.MinimalWhole = Convert.ToDouble(MinimalWholeTextBox.Text);
+                CurrentProduct.Stock = Convert.ToDouble(StockTextBox.Text);
+                CurrentProduct.Image = pictureBox1.Image;
+                NameTextBox.ReadOnly = true;
+                UnitTextBox.ReadOnly = true;
+                RetailPriceTextBox.ReadOnly = true;
+                WholePriceTextBox.ReadOnly = true;
+                MinimalWholeTextBox.ReadOnly = true;
+                StockTextBox.ReadOnly = true;
+                pictureBox1.Enabled = false;
+                EditButton.Enabled = true;
+                SaveButton.Visible = false;
+                CancelButton.Visible = false;
+                MainF.CatalogueUpdate();
+                MainF.MyProductsUpdate();
+                MainF.IsDirty = true;
+            }
+            else
+            {
+                string message = "Fill all the fields";
+                string caption = "Error Detected in Input";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result;
+
+                // Displays the MessageBox.
+                result = MessageBox.Show(message, caption, buttons);
+                return;
+            }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -132,8 +147,10 @@ namespace ExchangeApp
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
+            MainF.exchange.Products.Remove(CurrentProduct);
             MainF.CatalogueUpdate();
             MainF.MyProductsUpdate();
+            MainF.IsDirty = true;
             this.Close();
         }
 
@@ -149,7 +166,18 @@ namespace ExchangeApp
                 MainF.CatalogueUpdate();
                 MainF.MyProductsUpdate();
                 MainF.MyOrdersUpdate();
+                MainF.IsDirty = true;
             }
+        }
+
+        private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            var tb = (TextBox)sender;
+            if (tb.Text.Contains(',') && ch == ',')
+                e.Handled = true;
+            if (!Char.IsDigit(ch) && ch != 8 && ch != ',')
+                e.Handled = true;
         }
     }
 }
