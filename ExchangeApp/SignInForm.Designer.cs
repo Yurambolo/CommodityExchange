@@ -38,6 +38,7 @@
             // 
             // LoginTextBox
             // 
+            this.LoginTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LoginTextBox.Location = new System.Drawing.Point(159, 50);
             this.LoginTextBox.Name = "LoginTextBox";
             this.LoginTextBox.Size = new System.Drawing.Size(205, 22);
@@ -45,6 +46,7 @@
             // 
             // PasswordTextBox
             // 
+            this.PasswordTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PasswordTextBox.Location = new System.Drawing.Point(159, 108);
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.Size = new System.Drawing.Size(205, 22);
@@ -52,6 +54,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(160, 25);
             this.label1.Name = "label1";
@@ -61,6 +64,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(160, 88);
             this.label2.Name = "label2";
@@ -70,6 +74,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.Location = new System.Drawing.Point(218, 146);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 33);
@@ -80,9 +85,10 @@
             // 
             // button2
             // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button2.Location = new System.Drawing.Point(206, 220);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(102, 45);
+            this.button2.Size = new System.Drawing.Size(112, 45);
             this.button2.TabIndex = 5;
             this.button2.Text = "I do not have an account";
             this.button2.UseVisualStyleBackColor = true;
@@ -99,6 +105,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PasswordTextBox);
             this.Controls.Add(this.LoginTextBox);
+            this.MinimumSize = new System.Drawing.Size(220, 290);
             this.Name = "SignInForm";
             this.Text = "LoginForm";
             this.Load += new System.EventHandler(this.SignInForm_Load);

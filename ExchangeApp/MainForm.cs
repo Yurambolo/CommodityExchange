@@ -45,6 +45,13 @@ namespace ExchangeApp
                     MyProductsGridView.Rows.Add(row);
                 }
             }
+            if(tabControl1.SelectedIndex == 1)
+            {
+                if (MyProductsGridView.Rows.Count == 0)
+                    showCurrentToolStripMenuItem.Enabled = false;
+            }
+            else
+                showCurrentToolStripMenuItem.Enabled = true;
         }
 
         public void MyOrdersUpdate()
@@ -86,31 +93,34 @@ namespace ExchangeApp
 
         private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           DialogResult result = MessageBox.Show(
-           "Save changes before quitting?",
-           "Question",
-           MessageBoxButtons.YesNoCancel);
-
-            switch (result)
+            if (IsDirty)
             {
-                case DialogResult.Yes:
-                    {
-                        exchange.Save();
-                        IsDirty = false;
-                        break;
-                    }
-                case DialogResult.No:
-                    {
-                        break;
-                    }
-                case DialogResult.Cancel:
-                    {
-                        return;
-                    }
+                DialogResult result = MessageBox.Show(
+                "Save changes before quitting?",
+                "Question",
+                MessageBoxButtons.YesNoCancel);
+
+                switch (result)
+                {
+                    case DialogResult.Yes:
+                        {
+                            exchange.Save();
+                            IsDirty = false;
+                            break;
+                        }
+                    case DialogResult.No:
+                        {
+                            break;
+                        }
+                    case DialogResult.Cancel:
+                        {
+                            return;
+                        }
+                }
             }
-            SignInForm sig = (SignInForm)Application.OpenForms[0];
-            sig.Show();
-            this.Hide();
+                SignInForm sig = (SignInForm)Application.OpenForms[0];
+                sig.Show();
+                this.Hide();                       
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -215,29 +225,78 @@ namespace ExchangeApp
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult result = MessageBox.Show(
-            "Save changes before quitting?",
-            "Question",
-            MessageBoxButtons.YesNoCancel);
-
-            switch (result)
+            if (IsDirty)
             {
-                case DialogResult.Yes:
-                    {
-                        exchange.Save();
-                        IsDirty = false;
-                        break;
-                    }
-                case DialogResult.No:
-                    {
-                        break;
-                    }
-                case DialogResult.Cancel:
-                    {
-                        e.Cancel = true;
-                        break;
-                    }
+                DialogResult result = MessageBox.Show(
+                "Save changes before quitting?",
+                "Question",
+                MessageBoxButtons.YesNoCancel);
+
+                switch (result)
+                {
+                    case DialogResult.Yes:
+                        {
+                            exchange.Save();
+                            IsDirty = false;
+                            break;
+                        }
+                    case DialogResult.No:
+                        {
+                            break;
+                        }
+                    case DialogResult.Cancel:
+                        {
+                            e.Cancel = true;
+                            break;
+                        }
+                }
             }
+        }
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (IsDirty)
+            {
+                DialogResult result = MessageBox.Show(
+                "It will override current data. Save changes before refreshing?",
+                "Question",
+                MessageBoxButtons.YesNoCancel);
+
+                switch (result)
+                {
+                    case DialogResult.Yes:
+                        {
+                            exchange.Save();
+                            break;
+                        }
+                    case DialogResult.No:
+                        {
+                            break;
+                        }
+                    case DialogResult.Cancel:
+                        {
+                            return;
+                        }
+                }
+            }
+            IsDirty = false;
+            FormUpdate();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 1)
+            {
+                if (MyProductsGridView.Rows.Count == 0)
+                    showCurrentToolStripMenuItem.Enabled = false;
+            }
+            else
+                showCurrentToolStripMenuItem.Enabled = true;
         }
     }
 }

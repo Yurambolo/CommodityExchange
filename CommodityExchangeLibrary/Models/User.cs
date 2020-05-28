@@ -25,14 +25,5 @@ namespace CommodityExchange.Models
             Phone = phone;
             Email = email;
         }
-
-        public User(Guid id, string name, string password, string phone, string email)
-        {
-            Id = id;
-            Name = name;
-            Password = password;
-            Phone = phone;
-            Email = email;
-        }
     }
 }

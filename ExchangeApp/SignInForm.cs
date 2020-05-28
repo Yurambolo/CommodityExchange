@@ -58,8 +58,6 @@ namespace ExchangeApp
                             string caption1 = "Error Detected in Input";
                             MessageBoxButtons buttons1 = MessageBoxButtons.OK;
                             DialogResult result1;
-
-                            // Displays the MessageBox.
                             result1 = MessageBox.Show(message1, caption1, buttons1);
                             return;
                         }
@@ -70,8 +68,6 @@ namespace ExchangeApp
                 string caption = "Error Detected in Input";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 DialogResult result;
-
-                // Displays the MessageBox.
                 result = MessageBox.Show(message, caption, buttons);
                 return;
             }
@@ -81,8 +77,6 @@ namespace ExchangeApp
                 string caption = "Error Detected in Input";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 DialogResult result;
-
-                // Displays the MessageBox.
                 result = MessageBox.Show(message, caption, buttons);
                 return;
             }

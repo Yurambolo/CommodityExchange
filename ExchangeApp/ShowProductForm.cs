@@ -16,7 +16,9 @@ namespace ExchangeApp
         public Product CurrentProduct;
         User Seller;
         bool AllowEdit;
+        bool editing = false;
         MainForm MainF;
+
 
         public ShowProductForm(Product product, User seller, bool allowEdit, MainForm mainf)
         {
@@ -76,6 +78,7 @@ namespace ExchangeApp
             EditButton.Enabled = false;
             SaveButton.Visible = true;
             CancelButton.Visible = true;
+            editing = true;
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -97,10 +100,16 @@ namespace ExchangeApp
             EditButton.Enabled = true;
             SaveButton.Visible = false;
             CancelButton.Visible = false;
+            editing = false;
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            Save();
+        }
+        private bool Save()
+        {
+            
             if (!String.IsNullOrWhiteSpace(NameTextBox.Text) && !String.IsNullOrWhiteSpace(UnitTextBox.Text) && !String.IsNullOrWhiteSpace(RetailPriceTextBox.Text) && !String.IsNullOrWhiteSpace(WholePriceTextBox.Text) && !String.IsNullOrWhiteSpace(MinimalWholeTextBox.Text) && !String.IsNullOrWhiteSpace(StockTextBox.Text) && !(RetailPriceTextBox.Text[0] == ',') && !(RetailPriceTextBox.Text[RetailPriceTextBox.TextLength - 1] == ',') && !(WholePriceTextBox.Text[0] == ',') && !(WholePriceTextBox.Text[WholePriceTextBox.TextLength - 1] == ',') && !(MinimalWholeTextBox.Text[0] == ',') && !(MinimalWholeTextBox.Text[MinimalWholeTextBox.TextLength - 1] == ',') && !(StockTextBox.Text[0] == ',') && !(StockTextBox.Text[StockTextBox.TextLength - 1] == ','))
             {
                 CurrentProduct.Name = NameTextBox.Text;
@@ -123,6 +132,8 @@ namespace ExchangeApp
                 MainF.CatalogueUpdate();
                 MainF.MyProductsUpdate();
                 MainF.IsDirty = true;
+                editing = false;
+                return true;
             }
             else
             {
@@ -133,7 +144,7 @@ namespace ExchangeApp
 
                 // Displays the MessageBox.
                 result = MessageBox.Show(message, caption, buttons);
-                return;
+                return false;
             }
         }
 
@@ -147,6 +158,26 @@ namespace ExchangeApp
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show(
+               "Are you sure you want to delete this product?",
+               "Question",
+               MessageBoxButtons.YesNoCancel);
+
+            switch (result)
+            {
+                case DialogResult.Yes:
+                    {
+                        break;
+                    }
+                case DialogResult.No:
+                    {
+                        return;
+                    }
+                case DialogResult.Cancel:
+                    {
+                        return;
+                    }
+            }
             MainF.exchange.Products.Remove(CurrentProduct);
             MainF.CatalogueUpdate();
             MainF.MyProductsUpdate();
@@ -178,6 +209,36 @@ namespace ExchangeApp
                 e.Handled = true;
             if (!Char.IsDigit(ch) && ch != 8 && ch != ',')
                 e.Handled = true;
+        }
+
+        private void ShowProductForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (editing)
+            {
+                DialogResult result = MessageBox.Show(
+                "Save changes before quitting?",
+                "Question",
+                MessageBoxButtons.YesNoCancel);
+
+                switch (result)
+                {
+                    case DialogResult.Yes:
+                        {
+                            if (!Save())
+                                e.Cancel = true;
+                            break;
+                        }
+                    case DialogResult.No:
+                        {
+                            break;
+                        }
+                    case DialogResult.Cancel:
+                        {
+                            e.Cancel = true;
+                            break;
+                        }
+                }
+            }
         }
     }
 }

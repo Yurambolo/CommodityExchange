@@ -60,7 +60,5 @@ namespace CommodityExchange.Models
             }
             throw new Exception("ProductNotFound");
         }
-
-
     }
 }

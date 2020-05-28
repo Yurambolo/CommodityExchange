@@ -181,6 +181,7 @@
             // 
             // EditButton
             // 
+            this.EditButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.EditButton.Location = new System.Drawing.Point(232, 430);
             this.EditButton.Name = "EditButton";
             this.EditButton.Size = new System.Drawing.Size(99, 37);
@@ -192,6 +193,7 @@
             // 
             // SaveButton
             // 
+            this.SaveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.SaveButton.Location = new System.Drawing.Point(442, 430);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(99, 37);
@@ -203,6 +205,7 @@
             // 
             // CancelButton
             // 
+            this.CancelButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.CancelButton.Location = new System.Drawing.Point(127, 430);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(99, 37);
@@ -214,6 +217,9 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Enabled = false;
@@ -232,6 +238,7 @@
             // 
             // DeleteButton
             // 
+            this.DeleteButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.DeleteButton.Location = new System.Drawing.Point(337, 430);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(99, 37);
@@ -243,6 +250,7 @@
             // 
             // OrderButton
             // 
+            this.OrderButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.OrderButton.Location = new System.Drawing.Point(273, 430);
             this.OrderButton.Name = "OrderButton";
             this.OrderButton.Size = new System.Drawing.Size(99, 37);
@@ -276,8 +284,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.label1);
+            this.MinimumSize = new System.Drawing.Size(640, 520);
             this.Name = "ShowProductForm";
             this.Text = "ShowProductForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ShowProductForm_FormClosing);
             this.Load += new System.EventHandler(this.ShowProductForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

@@ -20,24 +20,9 @@ namespace CommodityExchange.Models
         public User Seller { set; get; } 
         public Image Image { set; get; }
 
-        public Product() { }
-
         public Product(string name, string unit, double retailPrice, double wholePrice, double minimalWhole, double stock, User seller, Image image)
         {
             Id = Guid.NewGuid();
-            Name = name;
-            Unit = unit;
-            RetailPrice = retailPrice;
-            WholePrice = wholePrice;
-            MinimalWhole = minimalWhole;
-            Stock = stock;
-            Seller = seller;
-            Image = image;
-        }
-
-        public Product(Guid id, string name, string unit, double retailPrice, double wholePrice, double minimalWhole, double stock, User seller, Image image)
-        {
-            Id = id;
             Name = name;
             Unit = unit;
             RetailPrice = retailPrice;

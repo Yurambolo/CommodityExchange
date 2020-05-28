@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.CatalogueGridView = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,6 +40,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,8 +69,6 @@
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.payMethodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.CatalogueGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -78,8 +77,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.MyProductsGridView)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MyOrdersGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // CatalogueGridView
@@ -100,10 +97,12 @@
             this.sellerIdDataGridViewTextBoxColumn2});
             this.CatalogueGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CatalogueGridView.Location = new System.Drawing.Point(3, 3);
+            this.CatalogueGridView.MultiSelect = false;
             this.CatalogueGridView.Name = "CatalogueGridView";
             this.CatalogueGridView.ReadOnly = true;
+            this.CatalogueGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.CatalogueGridView.RowTemplate.Height = 24;
-            this.CatalogueGridView.Size = new System.Drawing.Size(756, 347);
+            this.CatalogueGridView.Size = new System.Drawing.Size(754, 277);
             this.CatalogueGridView.TabIndex = 0;
             this.CatalogueGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CatalogueGridView_CellDoubleClick);
             // 
@@ -174,14 +173,16 @@
             this.productsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(768, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveToolStripMenuItem});
+            this.saveToolStripMenuItem,
+            this.refreshToolStripMenuItem,
+            this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
             this.fileToolStripMenuItem.Text = "File";
@@ -190,9 +191,24 @@
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // accountToolStripMenuItem
             // 
@@ -237,11 +253,13 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(18, 42);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 28);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(770, 382);
+            this.tabControl1.Size = new System.Drawing.Size(768, 312);
             this.tabControl1.TabIndex = 3;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -249,7 +267,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(762, 353);
+            this.tabPage1.Size = new System.Drawing.Size(760, 283);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Catalog";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -260,7 +278,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(762, 353);
+            this.tabPage2.Size = new System.Drawing.Size(760, 283);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "My products";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -283,10 +301,12 @@
             this.dataGridViewTextBoxColumn8});
             this.MyProductsGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MyProductsGridView.Location = new System.Drawing.Point(3, 3);
+            this.MyProductsGridView.MultiSelect = false;
             this.MyProductsGridView.Name = "MyProductsGridView";
             this.MyProductsGridView.ReadOnly = true;
+            this.MyProductsGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.MyProductsGridView.RowTemplate.Height = 24;
-            this.MyProductsGridView.Size = new System.Drawing.Size(756, 347);
+            this.MyProductsGridView.Size = new System.Drawing.Size(754, 277);
             this.MyProductsGridView.TabIndex = 1;
             this.MyProductsGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MyProductsGridView_CellDoubleClick);
             // 
@@ -354,7 +374,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(762, 353);
+            this.tabPage3.Size = new System.Drawing.Size(760, 283);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "My orders";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -377,10 +397,12 @@
             this.payMethodDataGridViewTextBoxColumn});
             this.MyOrdersGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MyOrdersGridView.Location = new System.Drawing.Point(3, 3);
+            this.MyOrdersGridView.MultiSelect = false;
             this.MyOrdersGridView.Name = "MyOrdersGridView";
             this.MyOrdersGridView.ReadOnly = true;
+            this.MyOrdersGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.MyOrdersGridView.RowTemplate.Height = 24;
-            this.MyOrdersGridView.Size = new System.Drawing.Size(756, 347);
+            this.MyOrdersGridView.Size = new System.Drawing.Size(754, 277);
             this.MyOrdersGridView.TabIndex = 2;
             // 
             // idDataGridViewTextBoxColumn
@@ -440,22 +462,15 @@
             this.payMethodDataGridViewTextBoxColumn.ReadOnly = true;
             this.payMethodDataGridViewTextBoxColumn.Width = 108;
             // 
-            // productBindingSource
-            // 
-            this.productBindingSource.DataSource = typeof(CommodityExchange.Models.Product);
-            // 
-            // orderBindingSource
-            // 
-            this.orderBindingSource.DataSource = typeof(CommodityExchange.Models.Order);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(768, 340);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(250, 250);
             this.Name = "MainForm";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
@@ -470,8 +485,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.MyProductsGridView)).EndInit();
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MyOrdersGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -484,12 +497,10 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.BindingSource productBindingSource;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem accountToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
-        private System.Windows.Forms.BindingSource orderBindingSource;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
@@ -520,6 +531,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateTimeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn payMethodDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }
 

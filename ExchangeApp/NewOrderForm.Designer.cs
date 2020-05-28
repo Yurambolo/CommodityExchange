@@ -45,6 +45,7 @@
             // 
             // PriceTextBox
             // 
+            this.PriceTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PriceTextBox.Location = new System.Drawing.Point(201, 89);
             this.PriceTextBox.Name = "PriceTextBox";
             this.PriceTextBox.ReadOnly = true;
@@ -53,6 +54,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(198, 69);
             this.label5.Name = "label5";
@@ -62,6 +64,7 @@
             // 
             // AmountTextBox
             // 
+            this.AmountTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.AmountTextBox.Location = new System.Drawing.Point(201, 32);
             this.AmountTextBox.Name = "AmountTextBox";
             this.AmountTextBox.Size = new System.Drawing.Size(153, 22);
@@ -71,6 +74,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(198, 12);
             this.label4.Name = "label4";
@@ -80,6 +84,7 @@
             // 
             // ProductTextBox
             // 
+            this.ProductTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ProductTextBox.Location = new System.Drawing.Point(12, 151);
             this.ProductTextBox.Name = "ProductTextBox";
             this.ProductTextBox.ReadOnly = true;
@@ -88,6 +93,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(9, 131);
             this.label3.Name = "label3";
@@ -97,6 +103,7 @@
             // 
             // SellerTextBox
             // 
+            this.SellerTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.SellerTextBox.Location = new System.Drawing.Point(12, 89);
             this.SellerTextBox.Name = "SellerTextBox";
             this.SellerTextBox.ReadOnly = true;
@@ -105,6 +112,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(9, 69);
             this.label2.Name = "label2";
@@ -114,6 +122,7 @@
             // 
             // BuyerTextBox
             // 
+            this.BuyerTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BuyerTextBox.Location = new System.Drawing.Point(12, 32);
             this.BuyerTextBox.Name = "BuyerTextBox";
             this.BuyerTextBox.ReadOnly = true;
@@ -122,6 +131,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 12);
             this.label1.Name = "label1";
@@ -131,6 +141,7 @@
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(198, 131);
             this.label7.Name = "label7";
@@ -140,6 +151,7 @@
             // 
             // PayMethodComboBox
             // 
+            this.PayMethodComboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PayMethodComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PayMethodComboBox.FormattingEnabled = true;
             this.PayMethodComboBox.Items.AddRange(new object[] {
@@ -152,6 +164,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.Location = new System.Drawing.Point(108, 194);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(130, 35);
@@ -178,6 +191,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.BuyerTextBox);
             this.Controls.Add(this.label1);
+            this.MinimumSize = new System.Drawing.Size(400, 300);
             this.Name = "NewOrderForm";
             this.Text = "NewOrderForm";
             this.Load += new System.EventHandler(this.NewOrderForm_Load);

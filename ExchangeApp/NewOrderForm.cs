@@ -35,15 +35,25 @@ namespace ExchangeApp
         private void button1_Click(object sender, EventArgs e)
         {
             if (!(PayMethodComboBox.SelectedItem == null) && !String.IsNullOrWhiteSpace(PriceTextBox.Text) && !(PriceTextBox.Text[0] == ',') && !(PriceTextBox.Text[PriceTextBox.TextLength - 1] == ','))
-                this.DialogResult = DialogResult.OK;
+            {
+                if (Convert.ToDouble(AmountTextBox.Text) <= Product.Stock)
+                    this.DialogResult = DialogResult.OK;
+                else
+                {
+                    string message = "Inputed amout is bigger than availible stock";
+                    string caption = "Error Detected in Input";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    DialogResult result;
+                    result = MessageBox.Show(message, caption, buttons);
+                    return;
+                }
+            }
             else
             {
                 string message = "Fill all the fields";
                 string caption = "Error Detected in Input";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 DialogResult result;
-
-                // Displays the MessageBox.
                 result = MessageBox.Show(message, caption, buttons);
                 return;
             }

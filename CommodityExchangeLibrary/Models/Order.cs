@@ -18,26 +18,9 @@ namespace CommodityExchange.Models
         public DateTime DateTime { set; get; }
         public string PayMethod { set; get; }
 
-        public Order() { }
-
         public Order(User buyer, User seller, Product product, double amount, double price, string paymethod, DateTime? t = null)
         {
             Id = Guid.NewGuid();
-            Buyer = buyer;
-            Seller = seller;
-            Product = product;
-            Amount = amount;
-            Price = price;
-            PayMethod = paymethod;
-            if (t == null)
-                DateTime = DateTime.Now;
-            else
-                DateTime = (DateTime)t;
-        }
-
-        public Order(Guid id, User buyer, User seller, Product product, double amount, double price, string paymethod, DateTime? t = null)
-        {
-            Id = id;
             Buyer = buyer;
             Seller = seller;
             Product = product;

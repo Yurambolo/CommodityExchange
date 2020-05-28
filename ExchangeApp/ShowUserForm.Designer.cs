@@ -38,7 +38,8 @@
             // 
             // EmailTextBox
             // 
-            this.EmailTextBox.Location = new System.Drawing.Point(31, 156);
+            this.EmailTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.EmailTextBox.Location = new System.Drawing.Point(50, 182);
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.ReadOnly = true;
             this.EmailTextBox.Size = new System.Drawing.Size(153, 22);
@@ -46,8 +47,9 @@
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(28, 136);
+            this.label6.Location = new System.Drawing.Point(47, 162);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(42, 17);
             this.label6.TabIndex = 30;
@@ -55,7 +57,8 @@
             // 
             // PhoneTextBox
             // 
-            this.PhoneTextBox.Location = new System.Drawing.Point(31, 92);
+            this.PhoneTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PhoneTextBox.Location = new System.Drawing.Point(50, 118);
             this.PhoneTextBox.Name = "PhoneTextBox";
             this.PhoneTextBox.ReadOnly = true;
             this.PhoneTextBox.Size = new System.Drawing.Size(153, 22);
@@ -63,8 +66,9 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 72);
+            this.label2.Location = new System.Drawing.Point(47, 98);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(101, 17);
             this.label2.TabIndex = 26;
@@ -72,7 +76,8 @@
             // 
             // NameTextBox
             // 
-            this.NameTextBox.Location = new System.Drawing.Point(31, 35);
+            this.NameTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.NameTextBox.Location = new System.Drawing.Point(50, 61);
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.ReadOnly = true;
             this.NameTextBox.Size = new System.Drawing.Size(153, 22);
@@ -80,8 +85,9 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 15);
+            this.label1.Location = new System.Drawing.Point(47, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 17);
             this.label1.TabIndex = 24;
@@ -91,13 +97,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(209, 225);
+            this.ClientSize = new System.Drawing.Size(254, 268);
             this.Controls.Add(this.EmailTextBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.PhoneTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.label1);
+            this.MinimumSize = new System.Drawing.Size(180, 230);
             this.Name = "ShowUserForm";
             this.Text = "ShowUserForm";
             this.Load += new System.EventHandler(this.ShowUserForm_Load);
